@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dhinesh R">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css" />
+    <link rel="stylesheet" href="asserts/css/contact.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background">
+        <!-- Navigation Bar -->
+        <nav id="nav">
+            <div class="mobile-menu-toggle"
+            >
+                    <i class='bx bx-dots-vertical-rounded'></i>
+                </div>
+                
+                <div class="mobile-menu-popup" >
+                    <div class="close-menu">
+                        <i class='bx bx-x'></i>
+                    </div>
+                    
+                    <div class="mobile-nav-section">
+                        <a href="index.html"><i class='bx bx-home'></i>Home</a>
+                        <a href="catalog.html"><i class='bx bx-book-open'></i>Catalog</a>
+                        <a href="contact.html"><i class='bx bx-envelope'></i>Contact</a>
+                    </div>
+                    
+                    <div class="mobile-nav-section">
+                        <a href="fav.html"><i class='bx bx-heart'></i>Favorites</a>
+                        <a href="cart.html"><i class='bx bxs-cart-add'></i>Cart</a>
+                        <a href="login.html"><i class='bx bx-user'></i>Account</a>
+                    </div>
+                </div>            
+    
+               <script>
+                document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const mobileMenu = document.querySelector('.mobile-menu-popup');
+        
+        // Make sure mobile menu is initially hidden (this is also handled in CSS)
+        mobileMenu.style.display = 'none';
+        
+        // Open menu when three dots are clicked
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.style.display = 'flex';
+            // Small timeout to allow display:flex to take effect before adding the active class
+            setTimeout(() => {
+                mobileMenu.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        });
+        
+        // Close menu when X is clicked
+        closeMenu.addEventListener('click', function() {
+            closeMenuFunction();
+        });
+        
+        // Close menu when clicking anywhere in the menu area
+        mobileMenu.addEventListener('click', function(e) {
+            // Only close if clicking the background (not the menu items)
+            if (e.target === mobileMenu) {
+                closeMenuFunction();
+            }
+        });
+        
+        // Function to handle closing the menu
+        function closeMenuFunction() {
+            mobileMenu.classList.remove('active');
+            // Wait for opacity transition to complete before hiding
+            setTimeout(() => {
+                mobileMenu.style.display = 'none';
+            }, 300); // This should match the CSS transition time
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
+               </script>
+            <div class="logo">
+                <p onclick="window.location.href='index.html'">Fruity <span style="color: #1C6;">Corner</span></p>
+            </div>
+            <div class="buttons">
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="icons">
+                <a href="fav.html" aria-label="Favorites"><i class='bx bx-heart'></i></a>
+                <a href="cart.html" aria-label="Cart"><i class='bx bxs-cart-add'></i></a>
+                <a href="login.html" class="button" aria-label="Login"><i class='bx bx-user'></i></a>
+            </div>
+        </nav>
+
+        <!-- Contact Section -->
+        <div class="content">
+            <div class="home-text">
+                <p>Questions or comments? <br>Get in touch, and we'll be happy to help.</p>
+            </div>
+            <div class="grow">
+                <h1>Let's Grow Together</h1>
+                <p>At The Fruity Corner, we’re passionate about bringing you nature’s finest fruits. Whether you’re
+                    looking to savor the freshest seasonal produce, inquire about bulk orders, or simply share your love
+                    for all things fruity, we’re here for you. Let’s connect and work together to make every day a
+                    little sweeter and healthier!</p>
+                <ul class="contact-list">
+                    <li><i class='bx bxl-gmail bx'></i><span>Email us:</span> dhineshravi4@gmail.com</li>
+                    <li><i class='bx bx-phone bx'></i><span>Call us:</span> +91 9568817853</li>
+                    <li><i class='bx bx-map bx'></i><span>Visit us:</span> 456 Tropical Lane, Orchard City, 789654</li>
+                </ul>
+                <div class="contact-icons">
+                    <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                    <a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="info">
+            <form action="#" id="contact-form">
+                <div class="name">
+                    <label for="first-name">First Name</label>
+                    <div class="name-fields">
+                        <input type="text" name="first name" placeholder="First Name" required>
+                        <input type="text" name="last name" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <label for="email">Email</label>
+                <input type="email"  name="email" placeholder="example@gmail.com" required>
+
+                <label for="phone">Phone (Optional)</label>
+                <input type="tel"  name="phone" placeholder="xxxx-xxx-xxx" pattern="[0-9]{10}">
+
+                <label for="message">Message</label>
+                <textarea name="message" placeholder="Type your message ..." rows="10" required></textarea>
+
+                <button type="submit" class="btn-submit">Submit</button>
+                <div class="loader">
+                    <i class="lni lni-spinner-3"></i>
+                </div>
+                <div class="form-message">
+    
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="contact">
+            <ul>
+                <div class="head">
+                    <p>Quick Links</p>
+                </div>
+                <li>Home</li>
+                <li>Catalog</li>
+                <li>Fresh Fruits</li>
+                <li>Dry Fruits</li>
+            </ul>
+            <ul>
+                <div class="head">
+                    <p>Feed Back</p>
+                </div>
+                <li>Share Your Feedback</li>
+            </ul>
+            <ul>
+                <div class="head">
+                    <p>Contact Us</p>
+                </div>
+                <li>dhineshravi4@gmail.com</li>
+                <li>+91 9568 817 853</li>
+            </ul>
+            <ul>
+                <div class="head">
+                    <p>Legal</p>
+                </div>
+                <li>Legal Disclaimer/Imprint</li>
+                <li>Privacy Policy</li>
+            </ul>
+            <ul>
+                <div class="head">
+                    <p>Order Status</p>
+                </div>
+                <li>Truck Your Order</li>
+            </ul>
+        </div>
+        <div class="icon1">
+            <p>Social Media</p>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-whatsapp'></i></a>
+            <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+        </div>
+    </footer>
+    <div class="last-text">
+        <p>© Developed by Dhinesh | 2025</p>
+    </div>
+    <a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="asserts/javascripts/contact.js"></script>
+</body>
+
+</html>

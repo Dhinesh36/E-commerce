@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dhinesh R">
+    <title>Catalog</title>
+    <link rel="stylesheet" href="asserts/css/catalog.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <!-- Navigation Bar -->
+        <nav id="nav">
+            <div class="mobile-menu-toggle"
+        >
+                <i class='bx bx-dots-vertical-rounded'></i>
+            </div>
+            
+            <div class="mobile-menu-popup" >
+                <div class="close-menu">
+                    <i class='bx bx-x'></i>
+                </div>
+                
+                <div class="mobile-nav-section">
+                    <a href="index.html"><i class='bx bx-home'></i>Home</a>
+                    <a href="catalog.html"><i class='bx bx-book-open'></i>Catalog</a>
+                    <a href="contact.html"><i class='bx bx-envelope'></i>Contact</a>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search fruits..." id="searchInput">
+                        <button type="button" onclick="searchItems()"><i class='bx bx-search'></i></button>
+                    </div>
+                </div>
+                
+                <div class="mobile-nav-section">
+                    <a href="fav.html"><i class='bx bx-heart'></i>Favorites</a>
+                    <a href="cart.html"><i class='bx bxs-cart-add'></i>Cart</a>
+                    <a href="login.html"><i class='bx bx-user'></i>Account</a>
+                </div>
+            </div>            
+
+           <script>
+            document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const closeMenu = document.querySelector('.close-menu');
+    const mobileMenu = document.querySelector('.mobile-menu-popup');
+    
+    // Make sure mobile menu is initially hidden (this is also handled in CSS)
+    mobileMenu.style.display = 'none';
+    
+    // Open menu when three dots are clicked
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.style.display = 'flex';
+        // Small timeout to allow display:flex to take effect before adding the active class
+        setTimeout(() => {
+            mobileMenu.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    });
+    
+    // Close menu when X is clicked
+    closeMenu.addEventListener('click', function() {
+        closeMenuFunction();
+    });
+    
+    // Close menu when clicking anywhere in the menu area
+    mobileMenu.addEventListener('click', function(e) {
+        // Only close if clicking the background (not the menu items)
+        if (e.target === mobileMenu) {
+            closeMenuFunction();
+        }
+    });
+    
+    // Function to handle closing the menu
+    function closeMenuFunction() {
+        mobileMenu.classList.remove('active');
+        // Wait for opacity transition to complete before hiding
+        setTimeout(() => {
+            mobileMenu.style.display = 'none';
+        }, 300); // This should match the CSS transition time
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+});
+           </script>
+            <div class="logo">
+                <p onclick="window.location.href='index.html'">Fruity <span style="color: #1C6;">Corner</span></p>
+            </div>
+            <div class="buttons">
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Search fruits..." id="searchInput">
+                <button type="button" onclick="searchItems()"><i class='bx bx-search'></i></button>
+            </div>
+
+            <div class="home-icons">
+                <a href="fav.html" aria-label="Favorites"><i class='bx bx-heart'>
+                        <div id="fav-item"></div>
+                    </i></a>
+                <a href="cart.html" aria-label="Cart"><i class='bx bxs-cart-add'></i></a>
+                <a href="login.html" class="button" aria-label="Login"><i class='bx bx-user'></i></a>
+            </div>
+        </nav>
+    </div>
+    <!-- fresh fruit -->
+    <div class="fresh-fruits-section">
+        <div class="section-wrap">
+            <div class="fresh-fruits-wrap">
+                <div class="section-title">
+                    <p>Fresh Fruits</p>
+                    <a href="#dry-fruits">See more <i class='bx bx-chevrons-right'></i></a>
+                </div>
+                <div class="fresh-fruits">
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/apple.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">18</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Fresh Apple</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>152</span>INR/kg</del>
+                                <ins><span>125</span>INR/kg</ins>
+                            </p>
+                            <div  class="add-cart" onclick="addToCart(event)">
+                                <p><span id="changeIcon"><i  class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/orange.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">20</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Fresh Orange</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>164</span>INR/kg</del>
+                                <ins><span>131</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/orange-green.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">18</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Green Orange</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>182</span>INR/kg</del>
+                                <ins><span>149</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/grape.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">24</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Fresh Grape</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>211</span>INR/kg</del>
+                                <ins><span>160</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/kiwi.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">22</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Fresh Kiwi</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>128</span>INR/kg</del>
+                                <ins><span>100</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/pomegranate.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">20</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Pomegranate</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>212</span>INR/kg</del>
+                                <ins><span>170</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/strawberry.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">12</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Strawberry</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>125</span>INR/kg</del>
+                                <ins><span>110</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/peach.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">18</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Fresh Peach</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>183</span>INR/kg</del>
+                                <ins><span>150</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/mango.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">10</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Fresh Mango</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>156</span>INR/kg</del>
+                                <ins><span>140</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/lemon.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">24</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Fresh Lemon</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>130</span>INR/kg</del>
+                                <ins><span>99</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/cherry.jpg" alt="cherry_img">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">22</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Cherry</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>160</span>INR/kg</del>
+                                <ins><span>125</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/blueberry.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">16</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Blueberry</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>155</span>INR/kg</del>
+                                <ins><span>130</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/pinapple.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">26</span>% off</p>
+                        </div>
+                        <div class="description">
+                            <p class="name">Pinapple</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>338</span>INR/kg</del>
+                                <ins><span>250</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/watermelon.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">12</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Watermelon</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>341</span>INR/kg</del>
+                                <ins><span>300</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/banna.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">10</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Banana</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>222</span>INR/kg</del>
+                                <ins><span>200</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span>Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fresh fruit end -->
+
+    <!-- dry fruit start -->
+    <div class="fresh-fruits-section" id="dry-fruits">
+        <div class="section-wrap">
+            <div class="fresh-fruits-wrap">
+                <div class="section-title">
+                    <p>Dry Fruits</p>
+                </div>
+                <div class="fresh-fruits">
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Cashews.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">18</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Cashews</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>147</span>INR/kg</del>
+                                <ins><span>121</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Walnuts.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">20</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Walnuts</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>164</span>INR/kg</del>
+                                <ins><span>131</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Pistachios.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">18</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Pistachios</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>182</span>INR/kg</del>
+                                <ins><span>149</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Raisinse.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">24</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Raisinse</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>211</span>INR/kg</del>
+                                <ins><span>160</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Dates.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">22</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Dates</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>128</span>INR/kg</del>
+                                <ins><span>100</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Sunflower Seeds.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">20</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Sunflower Seeds</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>212</span>INR/kg</del>
+                                <ins><span>170</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Apricots.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">12</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Apricots</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>125</span>INR/kg</del>
+                                <ins><span>110</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Prunes.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">18</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Prunes</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>183</span>INR/kg</del>
+                                <ins><span>150</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Hazelnuts.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">10</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Hazelnuts</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>156</span>INR/kg</del>
+                                <ins><span>140</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Brazil nuts.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">24</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Brazil nuts</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>130</span>INR/kg</del>
+                                <ins><span>99</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Macadamia nuts.jpg" alt="cherry_img">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">22</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Macadamia nuts</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>160</span>INR/kg</del>
+                                <ins><span>125</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Pecans.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">16</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Pecans</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>155</span>INR/kg</del>
+                                <ins><span>130</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Chestnuts.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">26</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Chestnuts</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>338</span>INR/kg</del>
+                                <ins><span>250</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Pumpkin Seeds.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">12</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Pumpkin Seeds</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>341</span>INR/kg</del>
+                                <ins><span>300</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product">
+                        <div class="imgage">
+                            <img src="asserts/images/Almonds.jpg">
+                        </div>
+
+                        <div class="icons">
+                            <div class="add-favorite" onclick="toggleFavorite(this)">
+                                <span class="icon-heart">
+                                    <i class='bx bxs-heart' id="heart" onclick="favouriteItem()"></i>
+                                </span>
+                            </div>
+                            <p><span class="discount">10</span>% off</p>
+                        </div>
+
+                        <div class="description">
+                            <p class="name">Almonds</p>
+                            <p class="price">
+                                <strong>Price:</strong>
+                                <del><span>222</span>INR/kg</del>
+                                <ins><span>200</span>INR/kg</ins>
+                            </p>
+                            <div class="add-cart" onclick="addToCart(event)">
+                                <p><span><i class='bx bxs-cart-add'></i></span> Add to Cart</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="contact">
+            <ul>
+                <div class="head">
+                    <p>Quick Links</p>
+                </div>
+                <li>Home</li>
+                <li>Catalog</li>
+                <li>Fresh Fruits</li>
+                <li>Dry Fruits</li>
+            </ul>
+            <ul>
+                <div class="head">
+                    <p>Feed Back</p>
+                </div>
+                <li>Share Your Feedback</li>
+            </ul>
+            <ul>
+                <div class="head">
+                    <p>Contact Us</p>
+                </div>
+                <li>dhineshravi4@gmail.com</li>
+                <li>+91 9568 817 853</li>
+            </ul>
+            <ul>
+                <div class="head">
+                    <p>Legal</p>
+                </div>
+                <li>Legal Disclaimer/Imprint</li>
+                <li>Privacy Policy</li>
+            </ul>
+            <ul>
+                <div class="head">
+                    <p>Order Status</p>
+                </div>
+                <li>Track Your Order</li>
+            </ul>
+        </div>
+        <div class="icon1">
+            <p>Social Media</p>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-whatsapp'></i></a>
+            <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+        </div>
+    </footer>
+    <div class="last-text">
+        <p>© Developed by Dhinesh | 2025</p>
+    </div>
+    <a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+    
+    <script src="asserts/javascripts/cart.js" type="script/text"></script>
+    <script src="asserts/javascripts/index.js"></script>
+    <script src="asserts/javascripts/favorite.js"></script>
+    <script src="asserts/javascripts/catalog.js"></script>
+
+</body>
+</html>

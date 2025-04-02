@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+* {
+    font-family: "Roboto Slab", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    height: 100vh;
+    width: 100%;
+    background-color: #eaf7e4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.main1 {
+    height: 100vh;
+    width: 50%;
+    background: #d4edda;
+    
+}
+
+.main a {
+    margin-left: 10px;
+    font-size: 24px;
+    color: rgb(3, 85, 3);
+    font-weight: bold;
+}
+
+.lot {
+    top: 20%;
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    width: 50%;
+    height: 100vh;
+}
+
+.content p {
+    padding: 30px;
+    margin-left: 30%;
+}
+
+.content a {
+    color: rgb(3, 85, 3);
+    font-weight: bold;
+}
+
+.elements {
+    margin-top: 5rem;
+    width: 100%;
+    padding: 10px;
+}
+
+.wel {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wel h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+}
+
+.wel h4 {
+    color: rgb(101, 96, 96);
+}
+
+.login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.inp input {
+    width: 68%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.inp input:focus {
+    border-color: #27ae60;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+.inp input:hover {
+    border-color: #27ae60;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+.but {
+    justify-content: center;
+    display: flex;
+}
+
+#btn {
+    padding: 12px;
+    width: 58%;
+    border-radius: 5px;
+    background: linear-gradient(to right, #27ae60, #145a32);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btn:hover {
+    background: linear-gradient(to right, #145a32, #27ae60);
+    transform: scale(1.05);
+}
+
+.forget {
+    margin-top: 10px;
+    margin-left: 60%;
+    padding: 10px;
+
+}
+
+.forget a {
+    color: rgb(3, 85, 3);
+}
+
+.google {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.orbut {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+hr {
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid #000;
+}
+
+.google a {
+    width: 58%;
+    padding: 8px;
+    border: 1px solid black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 1rem;
+    color: black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+.google a:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* Additional Responsive Styles  */
+@media screen and (max-width: 1024px) {
+    .main {
+        flex-direction: column;
+        height: auto;
+        justify-content: center;
+        /* display: flex; */
+        align-items: center;
+    }
+    .main1, .content {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .inp input, #btn, .google a {
+        width: 80%;
+    }
+    .content p {
+        margin-left: 10%;
+        text-align: center;
+    }
+    .forget {
+        margin-left: 40%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .wel h2 {
+        font-size: 1.5rem;
+    }
+    .wel h4 {
+        font-size: 1rem;
+        text-align: center;
+    }
+    .inp input, #btn, .google a {
+        width: 90%;
+    }
+    .forget {
+        margin-left: 30%;
+    }
+}
+
+
+/* Shake animation */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+
+/* Additional Responsive Styles */
+
+@media screen and (max-width: 1200px) {
+    .inp input, #btn, .google a {
+        width: 75%;
+    }
+    .forget {
+        margin-left: 50%;
+    }
+}
+
+/* Enhanced breakpoint for tablets */
+@media screen and (max-width: 576px) {
+    .inp {
+        gap: 20px;
+        padding: 15px;
+    }
+    .inp input, #btn, .google a {
+        width: 85%;
+    }
+    .forget {
+        margin-left: 35%;
+    }
+    .orbut {
+        width: 85%;
+    }
+}
+
+/* Handling very small screens */
+@media screen and (max-width: 320px) {
+    .wel h2 {
+        font-size: 1.3rem;
+    }
+    .inp input, #btn, .google a {
+        width: 95%;
+    }
+    .forget {
+        margin-left: 15%;
+    }
+    .content p {
+        padding: 15px;
+    }
+}
+
+/* Fix for very tall screens */
+@media screen and (min-height: 1000px) {
+    .main1, .content {
+        height: 100vh;
+        
+    }
+    /* .lot{
+        left: 0;
+        top: 50%;
+        transform: translate(0%, 0%);
+        position: relative;
+        display: flex
+    ;
+        align-items: center;
+        justify-content: center;
+    } */
+}
+
+/* Fix for small height screens */
+@media screen and (max-height: 700px) and (min-width: 1025px) {
+    .elements {
+        margin-top: 2rem;
+    }
+    .inp {
+        gap: 20px;
+    }
+    
+   
+}
+
+/* Handle orientation changes */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .main {
+        flex-direction: row;
+    }
+    .main1, .content {
+        height: auto;
+        min-height: 100vh;
+        
+    }
+    
+    .elements {
+        margin-top: 1rem;
+    }
+    .inp {
+        gap: 15px;
+    }
+}

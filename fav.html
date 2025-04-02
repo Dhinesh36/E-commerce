@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dhinesh R">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="asserts/css/fav.css">
+    <link rel="stylesheet" href="asserts/css/catalog.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="asserts/javascripts/favorite.js"></script>
+    <script src="asserts/javascripts/cart.js"></script>
+</head>
+<body>
+    <div class="fav-page">
+        <div class="close-fav">
+            <h1>Your Favorites</h1>
+            <button id="close-cart-button" onclick="closeFav()"><i class="bx bx-x"></i> Close
+        </div>
+        <hr class="line">
+        <div class="total">
+             <h2>Total Favorites: <span id="total-favorites">0</span></h2>
+            <button id="remove-button"> <i class="bx bx-trash"></i> Remove All</button> 
+        </div>
+        <div id="favorite-list" class="favorite-container">
+            <!-- Favorite items will be dynamically inserted here -->
+        </div>
+    </div>
+</body>
+</html>

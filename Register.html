@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dhinesh R">
+    <meta name="description" content="Register page for Fruity Corner website.">
+    <title>Register</title>
+    <link rel="stylesheet" href="asserts/css/register.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Let's jump to the Fruity Corner!</h2>
+        <form id="registerForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+            <span id="usernameError" class="error-message"></span>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <span id="passwordError" class="error-message"></span>
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" placeholder="Address..." required></textarea>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            <span id="phoneError" class="error-message"></span>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <div class="image">
+        <p onclick="window.location.href='index.html'">The Fruity Corner</p>
+    </div>
+    <!-- Custom Alert Box -->
+    <div id="customAlert" class="custom-alert">
+        <div class="alert-content">
+            <p id="alertMessage"></p>
+            <button id="alertClose">OK</button>
+        </div>
+    </div>
+    <script src="asserts/javascripts/register.js"></script>
+</body>
+</html>

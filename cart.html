@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dhinesh R">
+    <title>Cart</title>
+    <link rel="stylesheet" href="asserts/css/cart.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="cart-page">
+        <!-- Header Section -->
+        <div class="close-cart">
+            <h1>Your Cart</h1>
+            <button id="close-cart-button" onclick="closeCart()">
+                <i class="bx bx-x"></i> Close
+            </button>
+        </div>
+        <hr class="line">
+
+        <!-- Cart Items Section -->
+        <div id="cart-items" class="cart-container"></div>
+
+        <!-- Footer Section -->
+        <div class="total">
+            <h2>Total Items: <span id="total-items">0</span></h2>
+            <button id="buy-button" onclick="buyItems()">
+                <i class="bx bx-cart"></i> Payment
+            </button>
+        </div>
+    </div>
+    <script src="asserts/javascripts/cart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

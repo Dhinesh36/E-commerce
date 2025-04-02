@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Dhinesh R">
+  <title>Payment</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="asserts/css/payment.css">
+</head>
+<body>
+
+<div class="payment-container">
+  <div class="branding" onclick="window.location.href='index.html'">
+    Fruity <span>Corner</span>
+  </div>
+
+  <h1>Payment Details</h1>
+
+  <div class="order-summary" id="order-summary">
+    <h2>Your Order</h2>
+    <!-- Items will be inserted here -->
+  </div>
+
+  <div class="total-amount" id="total-amount">Total: ₹0.00</div>
+
+  <form id="payment-form" onsubmit="processPayment(event)">
+    <label for="fullname">Full Name</label>
+    <div class="input-group">
+      <i class="bx bx-user"></i>
+      <input type="text" id="fullname" placeholder="Enter Name" required>
+    </div>
+
+    <label for="address">Address</label>
+    <div class="input-group">
+      <i class="bx bx-home"></i>
+      <textarea id="address" rows="3" placeholder="123 Main Street, City, ZIP" required></textarea>
+    </div>
+
+    <label for="phone">Phone Number</label>
+    <div class="input-group">
+      <i class="bx bx-phone"></i>
+      <input type="tel" id="phone" placeholder="1234567890" pattern="[0-9]{10}" maxlength="10" required>
+    </div>
+
+    <label for="payment-method">Payment Method</label>
+    <div class="input-group">
+      <i class="bx bx-credit-card"></i>
+      <select id="payment-method" onchange="togglePaymentMethod()" required>
+        <option value="">-- Select --</option>
+        <option value="upi">💳 UPI</option>
+        <option value="cod">📦 Cash on Delivery</option>
+        <option value="card">💳 Card</option>
+      </select>
+    </div>
+
+    <div id="upi-section" class="card-details">
+      <label for="upi-id">UPI ID</label>
+      <div class="input-group">
+        <i class="bx bx-wallet"></i>
+        <input type="text" id="upi-id" placeholder="yourname@bank">
+      </div>
+    </div>
+
+    <div id="card-section" class="card-details">
+      <label for="card-name">Name on Card</label>
+      <div class="input-group">
+        <i class="bx bx-id-card"></i>
+        <input type="text" id="card-name" placeholder="Your Name">
+      </div>
+
+      <label for="card-number">Card Number</label>
+      <div class="input-group">
+        <i class="bx bx-credit-card-front"></i>
+        <input type="text" id="card-number" maxlength="16" placeholder="XXXX XXXX XXXX XXXX">
+      </div>
+
+      <label for="expiry">Expiry Date (MM/YY)</label>
+      <div class="input-group">
+        <i class="bx bx-calendar"></i>
+        <input type="text" id="expiry" maxlength="5" placeholder="MM/YY">
+      </div>
+
+      <label for="cvv">CVV</label>
+      <div class="input-group">
+        <i class="bx bx-lock-alt"></i>
+        <input type="password" id="cvv" maxlength="4" placeholder="XXX">
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="pay-button">Pay Now</button>
+      <button type="button" class="cancel-button" onclick="cancelPayment()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<!-- Success Popup -->
+<div id="popup-message" class="popup hidden">
+  <div class="popup-content">
+    <i class='bx bx-check-circle'></i>
+    <p>Payment successful! Thank you for your order.</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+
+<script src="asserts/javascripts/payment.js"></script>
+</body>
+</html>

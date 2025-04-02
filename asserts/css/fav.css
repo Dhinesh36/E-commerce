@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto+Slab:wght@100..900&display=swap');
+
+* {
+    font-family: "Roboto Slab", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.fav-page {
+    max-width: 1200px;
+    width: 100%;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-fav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.close-fav h1 {
+    font-size: 28px;
+    color: #333;
+    font-weight: 700;
+}
+
+.close-fav button {
+    background: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.close-fav button:hover {
+    background: darkgreen;
+}
+
+.line {
+    margin: 16px 0;
+    height: 1px;
+    width: 100%;
+    background-color: #e9ecef;
+    border: none;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.total h2 {
+    font-size: 24px;
+    color: #333;
+    font-weight: 700;
+}
+
+.total h2 span {
+    color: #28a745;
+}
+
+.total button {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.total button:hover {
+    background: #c82333;
+}
+
+.favorite-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 16px 0;
+}
+
+.favorite-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.favorite-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.favorite-details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.favorite-details img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease;
+}
+
+.favorite-details img:hover {
+    transform: scale(1.05);
+}
+
+.favorite-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.favorite-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.favorite-name span {
+    color: #666;
+}
+
+.favorite-price {
+    font-size: 16px;
+    color: #28a745;
+    font-weight: 500;
+}
+
+.favorite-discount {
+    font-size: 14px;
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.remove-favorite-item {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.remove-favorite-item:hover {
+    background: #c82333;
+}
+
+.confirm-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 40%;
+    height: 15rem;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.confirm-box p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.confirm-box button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+#confirm-remove {
+    background: #dc3545;
+    color: white;
+}
+
+#confirm-remove:hover {
+    background: #c82333;
+}
+
+#cancel-remove {
+    background: #6c757d;
+    color: white;
+}
+
+#cancel-remove:hover {
+    background: #5a6268;
+}
+
+
+/* RESPONSIVE ADDITIONS  */
+
+/* Mobile devices (small) */
+@media screen and (max-width: 576px) {
+    .fav-page {
+        padding: 16px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+    
+    .close-fav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .close-fav h1 {
+        font-size: 22px;
+    }
+    
+    .total {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .total h2 {
+        font-size: 20px;
+    }
+    
+    .favorite-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .favorite-details img {
+        width: 100%;
+        height: auto;
+        max-height: 180px;
+    }
+    
+    .confirm-box {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .confirm-box p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile devices (medium) */
+@media screen and (min-width: 577px) and (max-width: 767px) {
+    .fav-page {
+        padding: 20px;
+        margin: 15px;
+    }
+    
+    .favorite-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .confirm-box {
+        width: 80%;
+    }
+}
+
+/* Tablets */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .fav-page {
+        padding: 22px;
+    }
+    
+    .favorite-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    .confirm-box {
+        width: 60%;
+    }
+}
+
+/* Adjust confirm box for all responsive views */
+@media screen and (max-width: 991px) {
+    .confirm-box button {
+        padding: 8px 16px;
+        margin: 6px;
+    }
+}
+
+/* Fix for very small screens */
+@media screen and (max-width: 320px) {
+    .close-fav button, .total button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .favorite-card {
+        padding: 12px;
+    }
+}
