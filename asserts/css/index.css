@@ -312,12 +312,12 @@ nav {
     width: 100%;
     background-color: #f9f9f9;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;  /* Align to the left */
     align-items: center;
     padding: 20px;
-    overflow-x: hidden;
+    overflow-x: auto;  /* Allow horizontal scrolling */
     position: relative;
-    flex-wrap: wrap; /* Ensure reviews wrap on smaller screens */
+    flex-wrap: nowrap;  /* Prevent reviews from wrapping to a new line */
 }
 
 .reviews h1 {
@@ -333,7 +333,6 @@ nav {
 }
 
 .review {
-    margin-top: 5rem;
     background-color: #fff;
     border-radius: 10px;
     border: 1px solid grey;
@@ -345,6 +344,7 @@ nav {
     position: relative;
     margin-right: 10px;
     animation: slide 10s linear infinite;
+    flex-shrink: 0;  /* Prevent reviews from shrinking */
 }
 
 .review img {
@@ -386,13 +386,11 @@ nav {
 
 /* Mobile view */
 @media screen and (max-width: 768px) {
-    /* Stack reviews vertically */
     .reviews {
-        justify-content: center;  /* Center reviews */
-        flex-direction: column;
+        justify-content: flex-start;  /* Keep reviews left aligned */
+        flex-direction: row;  /* Ensure reviews stay in a row */
     }
 
-    /* Adjust review card styles */
     .review {
         min-width: 18rem;
         margin-top: 2rem; /* Add spacing between reviews */
@@ -418,7 +416,12 @@ nav {
 
 /* Mobile view for very small screens (576px and below) */
 @media screen and (max-width: 576px) {
-    /* Adjust layout for even smaller screens */
+    .reviews {
+        justify-content: flex-start;  /* Keep reviews left aligned */
+        flex-direction: row;  /* Ensure reviews stay in a row */
+        padding: 1rem 0;
+    }
+
     .reviews h1 {
         font-size: 1.2rem; /* Reduce the font size of heading */
         text-align: center; /* Center align heading */
@@ -427,7 +430,7 @@ nav {
 
     .review {
         min-width: 14rem; /* Smaller minimum width */
-        margin-right: 0; /* Remove margin between reviews */
+        margin-right: 10px; /* Ensure margin between reviews */
     }
 
     .review img {
@@ -443,9 +446,10 @@ nav {
         font-size: 0.8rem; /* Smaller review text */
     }
 
-    /* Ensure reviews are scrollable horizontally on small screens */
+    /* Enable horizontal scrolling */
     .reviews {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Ensure smooth scrolling on iOS */
     }
 }
 
