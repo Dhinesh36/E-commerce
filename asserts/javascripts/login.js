@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearError(passwordInput);
         document.getElementById('error-message').style.display = 'none';
 
-        if (username.length <= 8) {
+        if (username.length <= 7) {
             showError(usernameInput);
             alert("Username must be more than 8 characters!");
             return;
